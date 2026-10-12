@@ -1,0 +1,1 @@
+export default function FilterChips({options,value,onChange}){return <div className="filter-chips">{options.map(option=><button type="button" key={option} className={`filter-chip ${value===option?"active":""}`} aria-pressed={value===option} onClick={()=>onChange(option)}>{option}</button>)}</div>}

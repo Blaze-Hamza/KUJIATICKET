@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "KUJIA•TICKET"
+description = "A front-end-only East African event ticketing platform for discovering concerts, festivals, sports and culture events, buying simulated tickets, and managing organizer listings."
+version = "1.0.0"
+id = "artifacts/kujia-ticket"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20790
+
+[services.development]
+run = "pnpm --filter @workspace/kujia-ticket run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/kujia-ticket", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/kujia-ticket/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20790"
+BASE_PATH = "/"

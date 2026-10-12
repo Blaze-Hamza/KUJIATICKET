@@ -1,0 +1,1 @@
+export default function Toast({toast}){if(!toast)return null;return <div className="toast-region" role="status" aria-live="polite"><div className="toast">{toast.type==="error"?"Something needs a look — ":""}{toast.message}</div></div>}

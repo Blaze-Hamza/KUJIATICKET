@@ -1,0 +1,2 @@
+import { X } from "lucide-react";
+export default function Modal({title,eyebrow,children,onClose,className=""}){return <div className="modal-backdrop" onMouseDown={e=>e.target===e.currentTarget&&onClose?.()}><section className={`modal ${className}`} role="dialog" aria-modal="true" aria-label={title}><div className="modal-head"><div>{eyebrow&&<span className="eyebrow">{eyebrow}</span>}<h2>{title}</h2></div><button type="button" className="icon-button" onClick={onClose} aria-label="Close dialog"><X/></button></div>{children}</section></div>}

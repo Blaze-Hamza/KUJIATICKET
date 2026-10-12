@@ -1,0 +1,1 @@
+export default function SectionHeading({eyebrow,title,description,action,className=""}){return <div className={`section-head ${className}`}><div><span className="eyebrow">{eyebrow}</span><h2>{title}</h2></div>{description&&<p>{description}</p>}{action}</div>}

@@ -1,0 +1,1 @@
+export default function EventPhoto({event,...props}){return <img src={event.image} alt={`${event.title} event`} loading="lazy" onError={e=>{e.currentTarget.onerror=null;e.currentTarget.src=`https://picsum.photos/seed/kuj${event.id}/1200/800`}} {...props}/>}

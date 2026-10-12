@@ -1,0 +1,2 @@
+import { ArrowRight,Search } from "lucide-react";
+export default function SearchBar({value,onChange,onSubmit,placeholder="Search events…",buttonText="Search",dark=false}){return <form className={`searchbar ${dark?"searchbar-dark":""}`} onSubmit={onSubmit}><Search size={19} style={{marginLeft:13,alignSelf:"center"}}/><input value={value} onChange={onChange} placeholder={placeholder} aria-label="Search events"/><button className="btn" type="submit">{buttonText} <ArrowRight size={17}/></button></form>}

@@ -1,0 +1,64 @@
+Build the FRONT-END ONLY (Phase 1 of 3) of "KUJIA•TICKET", an East African event ticketing platform (concerts, festivals, sports, comedy, culture, conferences) for Kenya, Uganda, Tanzania and Rwanda. This is a MERN capstone, so structure the project so a Node/Express/MongoDB back-end can be plugged in later (Phase 2) without rewriting the UI.
+
+## TECH RULES (strict)
+- React 18 + Vite, JavaScript (no TypeScript), react-router-dom v6.
+- Styling: PLAIN CSS only (CSS variables + CSS Modules or one CSS file per component). NO Tailwind, NO Material-UI, NO Bootstrap. The brief requires hand-written CSS media queries, so I need to see them.
+- Icons: lucide-react. Fonts: Google Fonts (Syne for headings, DM Sans for body).
+- No back-end yet. Use mock data in /src/data/events.js and a service layer in /src/services/api.js with async functions (getEvents, getEventById, createOrder, getMyTickets, login, register, createEvent) that currently read/write mock data + localStorage with a fake 600ms delay. Later I will replace the insides with axios calls to Express, so keep function signatures clean.
+- State: React Context (AuthContext, CartContext, ToastContext). Persist auth, cart and purchased tickets in localStorage.
+- Folder structure:
+  src/components (reusable: Button, Input, Select, Badge, Modal, Skeleton, Toast, EventCard, TicketTierCard, QuantityStepper, SectionHeading, Navbar, Footer, SearchBar, FilterChips, Stepper, TicketPass, EmptyState, Reveal)
+  src/pages, src/context, src/hooks, src/services, src/data, src/styles (tokens.css, global.css, animations.css)
+- Every component must be reusable and take props. No copy-pasted markup.
+
+## DESIGN DIRECTION (must NOT look like a generic AI template)
+Feel: Nairobi night-out energy meets premium editorial design. Think festival poster meets modern fintech. Bold, warm, confident. NOT purple gradients, NOT glassmorphism cards on a blue background, NOT stock "SaaS landing page" layout.
+- Palette (CSS variables in tokens.css):
+  --ink: #0D0B09 (main dark bg)
+  --bone: #F3ECDD (light surfaces/text on dark)
+  --ember: #FF4D1C (primary accent / CTAs)
+  --savanna: #F2B134 (secondary accent, highlights, prices)
+  --acacia: #1E6B4A (success / verified)
+  --smoke: #8A8378 (muted text)
+- Typography: huge, tight-tracked Syne headlines (clamp() fluid sizing), DM Sans body. Use oversized display numbers for dates (e.g. "14 DEC") on cards.
+- Layout personality: asymmetric hero, a scrolling marquee strip of event names/cities, ticket-stub shaped cards (notched edges with dashed perforation line using CSS), grain/noise overlay on hero, sharp corners mixed with a few large radii. Dark theme by default.
+- Imagery: use https://picsum.photos with seeded URLs or CSS gradient/pattern placeholders per category (no broken images; add an onError fallback gradient).
+- Copywriting must be strong, local and human. Short, punchy, Kenyan-flavoured, no corporate fluff. Examples of tone: "Your next unforgettable night is one tap away.", "Pay with M-Pesa. Walk in with your phone.", "No queues. No fake tickets. Just vibes." Write all headlines, microcopy, empty states and error messages in this voice.
+
+## PAGES / ROUTES
+1. / Home: asymmetric hero with headline + search bar (event, city, date), animated marquee, "Happening this week" row, category tiles (Music, Festivals, Sports, Comedy, Culture, Nightlife, Business), featured event spotlight, "How it works" in 3 steps (Find it, Pay with M-Pesa, Scan at the gate), trust strip (verified organizers, instant QR tickets, secure payments), organizer CTA banner, footer.
+2. /events: Events listing with live search, filters (category chips, city/country select, price range, date: this week / this month / any), sort (soonest, price low-high, trending), result count, grid/list toggle, skeleton loading state, empty state.
+3. /events/:id Event details: hero banner, title, date/time, venue, city, organizer, about, line-up/schedule, location block, FAQ accordion, sticky ticket panel with tiers (Early Bird, Regular, VIP, Group of 4) using QuantityStepper, live subtotal in KES, "sold out" and "selling fast" badges, related events.
+4. /checkout 3-step flow with a Stepper: (1) Review tickets, (2) Your details (name, email, phone with +254/+256/+255/+250 selector) with inline validation, (3) Payment: M-Pesa STK push simulation (enter phone, "Check your phone" animated waiting state for ~4s, then success) plus card/Airtel Money as disabled "coming soon" options. Then a confirmation screen with confetti-style CSS animation and the generated ticket.
+5. /my-tickets: list of purchased tickets rendered as TicketPass components (ticket-stub design with a QR code placeholder generated from the order id; use the "qrcode.react" package), upcoming/past tabs, empty state.
+6. /login and /register: split-screen auth pages with form validation (UI + localStorage mock auth). Role choice on register: Attendee or Organizer.
+7. /organizer: protected dashboard (mock): stat cards (tickets sold, revenue in KES, upcoming events), a simple CSS/SVG bar chart (no chart libs), table of the organizer's events, and a "Create event" modal/form (title, category, date, venue, city, tiers, price, capacity, description) that adds to the mock list.
+8. * 404 page with a witty on-brand message.
+
+## MOCK DATA
+Create 16 realistic events across Nairobi, Mombasa, Kisumu, Kampala, Dar es Salaam, Zanzibar, Kigali. Use INVENTED event and organizer names (e.g. "Sunset Rhumba Sessions", "Lake Victoria Jazz Weekend", "Kigali Tech Nights"). Prices in KES (also show approximate UGX/TZS/RWF for non-Kenyan events via a simple helper). Each event: id, title, category, date, time, venue, city, country, price tiers, remaining tickets, organizer, image seed, description, lineup, tags, featured, trending.
+
+## INTERACTIONS & ANIMATIONS (required by the brief)
+- Reveal-on-scroll component using IntersectionObserver (fade + translateY, staggered).
+- Navbar: transparent on hero, solid on scroll, mobile slide-in drawer menu with animated hamburger, cart badge bounce when a ticket is added.
+- Card hover: lift, image zoom, ticket-stub notch glow.
+- Buttons: press feedback, loading spinner state.
+- Toasts for add to cart, errors, success.
+- Page transition fade between routes.
+- Skeleton shimmer loaders while the fake API loads.
+- QuantityStepper with disabled limits (max 6 per tier, never above remaining stock).
+- Accordion FAQ with smooth height animation.
+- Respect prefers-reduced-motion (disable big animations).
+
+## RESPONSIVENESS (required: CSS media queries)
+Mobile-first. Write explicit @media breakpoints at 480px, 768px, 1024px, 1280px. Test layouts at 360px, 768px, 1280px. On mobile: single-column cards, bottom sticky "Get tickets" bar on event page, drawer navigation, stacked filters in a slide-up sheet. No horizontal scroll anywhere. Touch targets at least 44px.
+
+## QUALITY BAR
+- Semantic HTML, alt text, visible focus states, aria labels on icon buttons, colour contrast AA.
+- Form validation with clear, friendly messages.
+- No console errors or warnings. No lorem ipsum anywhere. No placeholder "TODO" text.
+- Clean, commented code, consistent naming, small components.
+- Add a README.md with: project description, Phase 1 scope, tech stack, folder structure, how to run (npm install, npm run dev), a list of components, and a "Phase 2 plan" section (Express routes: /api/auth, /api/events, /api/orders, /api/tickets; Mongo models: User, Event, Order, Ticket).
+- Add a proper .gitignore (node_modules, dist, .env).
+
+Build everything in one go, make sure the app runs without errors, then give me a short summary of what was built and how to run it.

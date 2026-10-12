@@ -1,0 +1,3 @@
+import Badge from "./Badge.jsx";
+import QuantityStepper from "./QuantityStepper.jsx";
+export default function TicketTierCard({tier,quantity=0,remaining=tier.stock,onChange,currency}){const soldOut=remaining<=0;const sellingFast=!soldOut&&remaining<=25;return <div className="tier"><div className="tier-top"><span>{tier.name}</span><span>{currency}</span></div><p>{tier.description} · {remaining} left</p><div className="tier-bottom"><div>{soldOut?<Badge tone="smoke">Sold out</Badge>:sellingFast?<Badge tone="ember">Selling fast</Badge>:null}</div><QuantityStepper value={quantity} max={Math.min(6,remaining)} onChange={onChange} disabled={soldOut}/></div></div>}

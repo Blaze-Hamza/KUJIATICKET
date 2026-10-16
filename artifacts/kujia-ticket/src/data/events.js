@@ -1,4 +1,48 @@
-const image = (id) => `https://picsum.photos/seed/kujia-${id}/1200/800`;
+export const categoryImages = {
+  Music: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+  Festivals: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
+  Sports: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
+  Comedy: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=1200&q=80",
+  Culture: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+  Nightlife: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
+  Business: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"
+};
+
+export const eventImages = [
+  // 1. Nairobi After Hours (Nightlife, KICC Rooftop, Afro-house)
+  "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
+  // 2. Sauti za Bahari (Coastal celebration of Swahili sound & Indian Ocean waterfront)
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+  // 3. Lake Basin Food & Sound (Lakeside fresh fish, food & sound on Lake Victoria)
+  "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+  // 4. Kampala Nyege Nights (East African electronic club music & late night)
+  "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+  // 5. Dar Rooftop Sessions (Bongo Flava & taarab rooftop concert)
+  "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+  // 6. Zanzibar Moon Market (Evening night market of makers, Swahili plates & palms)
+  "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+  // 7. Kigali Creative Forum (Designers & talks at Kigali Convention Centre)
+  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+  // 8. Blankets & Wine: Greenhouse (Open-air live music festival & picnic under trees)
+  "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80",
+  // 9. Mombasa Street Food Weekender (Coastal street food festival & long tables)
+  "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+  // 10. Kisumu Jazz on the Pier (Sunset jazz & groove on Lake Victoria pier)
+  "https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=1200&q=80",
+  // 11. Kampala Art After Dark (Contemporary art gallery exhibition & sound installations)
+  "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+  // 12. Dar Design Week: Open Studio (Tanzanian design studios, crafts & workshops)
+  "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1200&q=80",
+  // 13. Kigali Jazz Junction (Polished live jazz concert stage)
+  "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80",
+  // 14. Nairobi Open Mic & Laughs (Stand-up comedy showcase & microphone on stage)
+  "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=1200&q=80",
+  // 15. Zanzibar Dhow & Dinner (Traditional wooden dhow sailboat & candlelit dinner)
+  "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80",
+  // 16. Kampala Run Club Social (City 5K run, running community & morning athletics)
+  "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&fit=crop&w=1200&q=80"
+];
+
 const base = [
   ["Nairobi After Hours", "Nairobi", "Kenya", "Nightlife", "Nov 14, 2026", "KICC Rooftop", "Nia Sounds", 2500, 8500, "A rooftop night above the city, where live Afro-house meets a skyline that never quite sleeps.", ["Sauti Sol DJ set", "Wanjiku", "Maqa"], ["Nightlife","Afro-house"], true, true],
   ["Sauti za Bahari", "Mombasa", "Kenya", "Culture", "Nov 21, 2026", "Mama Ngina Waterfront", "Pwani Collective", 1800, 12000, "A coastal celebration of Swahili sound, craft and food at the edge of the Indian Ocean.", ["Mzee Juma", "Mombasa Roots", "Zawadi"], ["Coastal","Live music"], true, false],
@@ -17,5 +61,39 @@ const base = [
   ["Zanzibar Dhow & Dinner", "Zanzibar", "Tanzania", "Culture", "Mar 06, 2027", "Stone Town Harbour", "Stone Town Stories", 65000, 190000, "A sunset sail and a candlelit Swahili dinner served just off Stone Town.", ["Chef Amina"], ["Dinner","Sunset"], false, true],
   ["Kampala Run Club Social", "Kampala", "Uganda", "Sports", "Mar 13, 2027", "Lugogo Bypass", "Kampala Run Club", 12000, 42000, "An easy five-kilometre city run that finishes with coffee, music and no rush home.", ["Run Club DJs"], ["Wellness","Community"], false, false]
 ];
-export const events = base.map((e,i)=>{const regular=Math.round(e[8]*.68/100)*100;return {id:`kuj-${String(i+1).padStart(2,"0")}`,title:e[0],city:e[1],country:e[2],category:e[3],date:e[4],venue:e[5],organizer:e[6],price:e[7],maxPrice:e[8],description:e[9],lineup:e[10],tags:e[11],featured:e[12],trending:e[13],image:image(i+1),stock:100+(i*37)%380,tiers:[{name:"Early Bird",price:e[7],stock:i===0?0:i%4===1?18:Math.max(28,40+i*2),description:"Limited release · mobile ticket"},{name:"Regular",price:regular,stock:80+i*4,description:"Standard admission"},{name:"VIP",price:e[8],stock:20+i,description:"Priority entry + reserved area"},{name:"Group of 4",price:Math.round(regular*3.6/100)*100,stock:i===0?0:Math.max(4,Math.floor((80+i*4)/4)),description:"Four entries in one booking"}],faqs:[["How do I get in?","Your ticket is delivered instantly after payment. Show the QR pass at the gate."],["Can I transfer my ticket?","Tickets are issued to your account. Contact the organiser for transfer support."],["What is the refund policy?","If the event is cancelled, you will receive a full refund through your original payment method."]] }});
-export const categories=["Music","Festivals","Sports","Comedy","Culture","Nightlife","Business"];
+
+export const events = base.map((e, i) => {
+  const regular = Math.round(e[8] * 0.68 / 100) * 100;
+  return {
+    id: `kuj-${String(i + 1).padStart(2, "0")}`,
+    title: e[0],
+    city: e[1],
+    country: e[2],
+    category: e[3],
+    date: e[4],
+    venue: e[5],
+    organizer: e[6],
+    price: e[7],
+    maxPrice: e[8],
+    description: e[9],
+    lineup: e[10],
+    tags: e[11],
+    featured: e[12],
+    trending: e[13],
+    image: eventImages[i] || categoryImages[e[3]] || "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+    stock: 100 + (i * 37) % 380,
+    tiers: [
+      { name: "Early Bird", price: e[7], stock: i === 0 ? 0 : i % 4 === 1 ? 18 : Math.max(28, 40 + i * 2), description: "Limited release · mobile ticket" },
+      { name: "Regular", price: regular, stock: 80 + i * 4, description: "Standard admission" },
+      { name: "VIP", price: e[8], stock: 20 + i, description: "Priority entry + reserved area" },
+      { name: "Group of 4", price: Math.round(regular * 3.6 / 100) * 100, stock: i === 0 ? 0 : Math.max(4, Math.floor((80 + i * 4) / 4)), description: "Four entries in one booking" }
+    ],
+    faqs: [
+      ["How do I get in?", "Your ticket is delivered instantly after payment. Show the QR pass at the gate."],
+      ["Can I transfer my ticket?", "Tickets are issued to your account. Contact the organiser for transfer support."],
+      ["What is the refund policy?", "If the event is cancelled, you will receive a full refund through your original payment method."]
+    ]
+  };
+});
+
+export const categories = ["Music", "Festivals", "Sports", "Comedy", "Culture", "Nightlife", "Business"];
